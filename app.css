@@ -41,7 +41,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background: linear-gradient(135deg, var(--bg) 0%, #1a1a1a 50%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, #161a2b 50%, var(--primary-light) 100%);
   color: var(--text);
   min-height: 100vh;
 }
@@ -55,6 +55,38 @@ main {
   padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
 }
 
+#top{
+  scroll-margin-top: 100px; /* juster efter headerens højde */
+  scroll-behavior: smooth;
+  
+
+}
+
+/* ...existing code... */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+/* ...existing code... */
+
+/* fjern link-styling for skip-to-top */
+.skip-to-top {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+
+}
+.skip-to-top:focus,
+.skip-to-top:hover {
+  text-decoration: none;
+
+}
+
 /* =====================
    FILTERBAR (SØG/SORT/FILTER)
    ===================== */
@@ -64,6 +96,33 @@ main {
   align-items: center;
   margin-bottom: 2rem;
 }
+
+#search-form button {
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.btn--seach {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.btn--seach:hover {
+  background: var(--primary);
+  color: var(--secondary);
+   transform: translateY(-4px);
+   
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--secondary);
+}
+
 
 #search-input {
   flex: 1;
@@ -141,18 +200,23 @@ footer {
 /* TODO !!! */
 
 .movie-card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: var(--bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.219);
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.2s ease;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-width: 2px;
 }
+  
+
 
 .movie-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   border-color: var(--secondary);
 }
 
@@ -164,9 +228,9 @@ footer {
 .movie-poster {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: cover; /*(fylder hele kortets bredde og højde, beskærer om nødvendigt)*/
   background: linear-gradient(135deg, var(--secondary-light), var(--primary-light));
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .movie-card:hover .movie-poster {
@@ -397,5 +461,39 @@ dialog#movie-dialog::backdrop {
   }
   #close-dialog {
     background: rgba(23, 23, 23, 0.9);
+  }
+}
+
+
+
+/* Mobile først - 1 kolonne */
+#movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Tablet - 2 kolonner */
+@media (min-width: 600px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+
+/* Desktop - 3 kolonner */
+@media (min-width: 992px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Store skærme - 4 kolonner */
+@media (min-width: 1400px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
