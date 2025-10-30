@@ -37,11 +37,13 @@
   padding: 0;
 }
 
+/* HER ÆNDRER VI BAGGRUNDEN */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+    sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background: linear-gradient(135deg, var(--bg) 0%, #161a2b 50%, var(--primary-light) 100%);
+  background: #202124;
   color: var(--text);
   min-height: 100vh;
 }
@@ -55,11 +57,9 @@ main {
   padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
 }
 
-#top{
+#top {
   scroll-margin-top: 100px; /* juster efter headerens højde */
   scroll-behavior: smooth;
-  
-
 }
 
 /* ...existing code... */
@@ -79,12 +79,10 @@ html {
   color: inherit;
   text-decoration: none;
   display: inline-block;
-
 }
 .skip-to-top:focus,
 .skip-to-top:hover {
   text-decoration: none;
-
 }
 
 /* =====================
@@ -94,7 +92,8 @@ html {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 #search-form button {
@@ -117,22 +116,22 @@ html {
 .btn--seach:hover {
   background: var(--primary);
   color: var(--secondary);
-   transform: translateY(-4px);
-   
+  transform: translateY(-4px);
+
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   border-color: var(--secondary);
 }
-
 
 #search-input {
   flex: 1;
   min-width: 120px;
 }
 
+/* STYLING AF FILTER-BAR */
 #search-input,
 #genre-select,
 #sort-select {
-  background: var(--bg-card);
+  background: var(--primary-light);
   color: var(--text);
   border: 1px solid var(--secondary);
   border-radius: var(--radius);
@@ -164,7 +163,7 @@ html {
    HEADER & FOOTER
    ===================== */
 header {
-  background: rgba(38, 76, 89, 0.8);
+  background: darkolivegreen;
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(172, 198, 201, 0.2);
   color: var(--text);
@@ -176,6 +175,7 @@ header {
   right: 0;
   z-index: 1000;
   transition: var(--transition);
+  opacity: 0.99;
 }
 
 header h1 {
@@ -185,7 +185,7 @@ header h1 {
 }
 
 footer {
-  background: var(--primary);
+  background: darkolivegreen;
   color: var(--text);
   text-align: center;
   padding: 2rem 1rem;
@@ -203,7 +203,7 @@ footer {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background-color: var(--bg);
+  background-color: #3c4043;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.219);
   overflow: hidden;
   transition: transform 0.2s ease;
@@ -211,17 +211,27 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-width: 2px;
 }
-  
 
+/* Tilføj til din app.css */
+.movie-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
 
 .movie-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  border-color: var(--secondary);
+  border-color: darkolivegreen;
+  border-width: 4px;
 }
 
 .movie-card:focus {
-  outline: 3px solid var(--secondary);
+  outline: 3px solid darkolivegreen;
   outline-offset: 2px;
 }
 
@@ -229,7 +239,11 @@ footer {
   width: 100%;
   height: 400px;
   object-fit: cover; /*(fylder hele kortets bredde og højde, beskærer om nødvendigt)*/
-  background: linear-gradient(135deg, var(--secondary-light), var(--primary-light));
+  background: linear-gradient(
+    135deg,
+    var(--secondary-light),
+    var(--primary-light)
+  );
   transition: transform 0.3s ease;
 }
 
@@ -464,8 +478,6 @@ dialog#movie-dialog::backdrop {
   }
 }
 
-
-
 /* Mobile først - 1 kolonne */
 #movie-list {
   display: grid;
@@ -482,7 +494,6 @@ dialog#movie-dialog::backdrop {
     padding: 2rem;
   }
 }
-
 
 /* Desktop - 3 kolonner */
 @media (min-width: 992px) {

@@ -1,35 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Rasmus Cederdorff - RACE" />
-    <meta name="description" content="Project Template" />
+    <title>Movie App Session 3</title>
     <link rel="stylesheet" href="app.css" />
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
-    <title>Movie App</title>
   </head>
+  <body id="top">
+     <header>
+    <h1><a href="#top" class="skip-to-top">🎬 Movie Database</a></h1>
+    <p>Søg, filtrer og sortér dine yndlingsfilm</p>
+  </header>
 
-    <body>
-    <header>
-    <h1><a href="#top" class="skip-to-top">Movie App</a></h1>
-    </header>
     <main>
-       <!-- Movie Her laves en søgefunktion til film -->
-            <form id="search-form">
-  <input id="search-input" type="search" placeholder="Søg film, instruktør, genre eller skuespiller..." />
-  <button type="submit">Søg</button>
-</form>
+      <!-- Filter Bar -->
+  <section class="filterbar">
+    <input id="search-input" type="search" placeholder="Søg film..." />
+    <select id="genre-select">
+      <option value="all">Alle genrer</option>
 
-<div id="movie-list"></div>
-      <!-- Movie List -->
-      <section id="movie-list"></section>
+      <!-- Genre options will be populated from JS -->
+    </select>
+    <select id="sort-select">
+      <option value="title">Sortér: Titel (A-Å)</option>
+      <option value="year">Sortér: År (nyeste)</option>
+    </select>
+
+    <!-- Tilføj denne linje til din filter-bar sektion -->
+    <select id="sort-select">
+    <option value="none">Ingen sortering</option>
+    <option value="title">Sortér: Titel (A-Å)</option>
+    <option value="year">Sortér: År (nyeste først)</option>
+    <option value="rating">Sortér: Rating (højeste først)</option>
+    </select>
+
+    
+  </section>
+  <!-- Movie List -->
+  <section id="movie-list">
+    <!-- Movie items will be displayed here - from JS -->
+  </section>
+      <!-- Movie grid -->
+      <section id="movie-list" class="movie-grid">
+        <!-- Movies indsættes her via JavaScript -->
+      </section>
     </main>
-    <!-- Footer -->
-    <footer>
-      <p>© Julie Wendelboe Bøcher</p>
-    </footer>
 
     <script src="app.js"></script>
+
+     <footer>
+      <p>© Julie Wendelboe</p>
+    </footer>
+
   </body>
 </html>
